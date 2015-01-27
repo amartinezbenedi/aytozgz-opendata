@@ -12,6 +12,8 @@ public class ConsultaOrcl{
  private java.sql.Connection con=null;
  private java.sql.Statement stmt;
  public ResultSet resultado;
+ 
+ 
  //consulta: sentencia sql. modo: 1-&gt;insert, delete, update. 2-&gt;select.
  public String consultaOrcl(String consulta, Integer modo)
  {
