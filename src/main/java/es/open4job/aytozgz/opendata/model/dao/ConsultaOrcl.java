@@ -39,6 +39,8 @@ public class ConsultaOrcl{
 	  if (modo == 1)
 	  {
 		  stmt.executeUpdate(consulta);
+		  
+		  
 	  }
 	  else
 	  {
