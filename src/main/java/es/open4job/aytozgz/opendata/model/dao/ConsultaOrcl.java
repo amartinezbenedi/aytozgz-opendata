@@ -40,7 +40,6 @@ public class ConsultaOrcl{
 	  {
 		  stmt.executeUpdate(consulta);
 		  
-		  
 	  }
 	  else
 	  {
