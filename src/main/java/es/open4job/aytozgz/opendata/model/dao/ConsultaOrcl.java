@@ -20,6 +20,7 @@ public class ConsultaOrcl{
   String regs ="";
   StringWriter sw = null;
   PrintWriter pw = null;
+  
   try
   {
 	  String driver = "oracle.jdbc.driver.OracleDriver";
