@@ -2,6 +2,7 @@ package es.open4job.aytozgz.opendata.model.vo;
 
 import java.util.Date;
 
+
 public class AparcamientosPublicosVO {
 	private Punto punto;
 	private String horario;
