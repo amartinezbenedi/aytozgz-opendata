@@ -14,9 +14,12 @@ public class App {
    	
     	AparcamientoBiciDAO bicisDAO = new AparcamientoBiciDAO();
     	List<AparcamientoBiciVO> bicis = bicisDAO.getListadoAparcamientoBici();
+
     	AparcamientosPublicosDAO apDAO = new AparcamientosPublicosDAO();
     	List<AparcamientosPublicosVO> aparcamientos = apDAO.getListadoAparcamientos();
-    	System.out.print("");  			
+
+    	System.out.println("-------------Lista de bicis--------------");  			
+
     			
     	if (bicis != null) {
     		Iterator<AparcamientoBiciVO> iterator = bicis.iterator();

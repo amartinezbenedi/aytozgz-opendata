@@ -34,6 +34,7 @@ public class AparcamientoPublicotest {
 		aparcamientos = apDAO.getListadoAparcamientos();
 		assertNotNull(aparcamientos);
 		
+		
 	}
 
 }

@@ -1,33 +1,44 @@
 package es.open4job.aytozgz.opendata.model.vo;
 
-import java.util.Date;
+import java.sql.Date;
+
+
 
 
 public class AparcamientosPublicosVO {
 	private Punto punto;
 	private String horario;
 	private String title;
+	private String icon;
 	private String accesos;
 	private Date lastUpdated;
 	private String accesoPeaton;
 	private String accesoVehiculo;
 	private int id;
-	public AparcamientosPublicosVO(Punto punto, String horario, String title,
-			String accesos, Date lastUpdated, String accesoPeaton,
+	public AparcamientosPublicosVO(Punto punto, String horario, String title, String icon,
+			String accesos, Date fecha, String accesoPeaton,
 			String accesoVehiculo, int id) {
 		super();
 		this.punto = punto;
 		this.horario = horario;
 		this.title = title;
+		this.icon = icon;
 		this.accesos = accesos;
-		this.lastUpdated = lastUpdated;
+		this.lastUpdated = fecha;
 		this.accesoPeaton = accesoPeaton;
 		this.accesoVehiculo = accesoVehiculo;
 		this.id = id;
 	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 	public Punto getPunto() {
 		return punto;
 	}
+	
 	public void setPunto(Punto punto) {
 		this.punto = punto;
 	}
