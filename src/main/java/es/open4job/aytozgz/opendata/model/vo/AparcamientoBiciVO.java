@@ -8,7 +8,10 @@ public class AparcamientoBiciVO {
 	private Punto punto;	
 	private String title;
 	private String icon;
-	private Date lastUpdated;
+	private Date lastUpdated;	
+
+	public AparcamientoBiciVO() {
+	}
 	
 	public AparcamientoBiciVO(int id,Punto punto,String title,String icon,Date lasTUpdated) {
 		this.id = id;
@@ -17,6 +20,13 @@ public class AparcamientoBiciVO {
 		this.icon = icon;
 		this.lastUpdated = lasTUpdated;
 	}
+	
+	@Override
+	public String toString() {
+		return "AparcamientoBiciVO [id=" + id + ", punto=(" + punto.getX() + "," +  punto.getX() +"), title="
+				+ title + ", icon=" + icon + ", lastUpdated=" + lastUpdated
+				+ "]";
+	}	
 	
 	public int getId() {
 		return id;

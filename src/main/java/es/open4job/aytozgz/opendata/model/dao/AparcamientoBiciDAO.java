@@ -19,13 +19,13 @@ public class AparcamientoBiciDAO{
 	// Listado de aparcamiento bicis
 	public List<AparcamientoBiciVO> getListadoAparcamientoBici() {
 		List<AparcamientoBiciVO> bicis = new ArrayList<AparcamientoBiciVO>();;			
-		String query = "Select * from EQ4_Aparca";
+		String query = "Select ID,LASTUPDATED,ICON,TITLE,COORDX,COORDY from EQ4_BICI";
 		Statement stmt = null;
 		ResultSet rs = null;
-		
 
 		ConsultaOrcl co = new ConsultaOrcl();
 		Connection conection =  co.Conexion();
+		System.out.println("conexion abierta");
 		
 		try {			
 			
@@ -34,9 +34,9 @@ public class AparcamientoBiciDAO{
 			Punto punto = null;
 			while (rs.next()) {
 				 int id = rs.getInt(1);
-				 String title = rs.getString(2);
-				 String icon = rs.getString(3);				
-				 Date fecha = rs.getDate(4);			 
+				 Date fecha = rs.getDate(2);					 
+				 String icon = rs.getString(3);	
+				 String title = rs.getString(4);	 
 				 int x = rs.getInt(5);
 				 int y = rs.getInt(6);				
 				 punto = new Punto(x, y);
@@ -61,13 +61,14 @@ public class AparcamientoBiciDAO{
 					rs.close();
 				} catch (Exception e) {
 				}
-		}
+			}
 			if (stmt != null) {
 				try {
 					stmt.close();
 				} catch (Exception e) {
 				}
 			}
+			System.out.println("conexion cerrada ");
 		}
 		
 		return bicis;
