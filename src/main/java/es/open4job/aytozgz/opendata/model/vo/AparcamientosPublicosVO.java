@@ -87,7 +87,7 @@ public class AparcamientosPublicosVO {
 	
 	public String toString(){
 		return ("Punto: " + punto + ", horario: " + horario + ", titulo:" +
-				 title + ", accesos: " + accesos + ", última actualizacion: " +
+				 title + ", icon: " + icon + ", accesos: " + accesos + ", última actualizacion: " +
 				lastUpdated + ", acceso peatones: " + accesoPeaton + ", acceso "
 						+ "vehiculos: " + accesoVehiculo + ", id: " + id);
 	}

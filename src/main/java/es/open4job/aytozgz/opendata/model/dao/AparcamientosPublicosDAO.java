@@ -20,8 +20,8 @@ public class AparcamientosPublicosDAO {
 
 	public List<AparcamientosPublicosVO> getListadoAparcamientos() {
 		List<AparcamientosPublicosVO> aparcamientos = new ArrayList<AparcamientosPublicosVO>();
-		String query = "SELECT ID,LASTUPDATED,ICON,TITLE,HORARIO,ACCESOPEATON,ACCESOS,ACCESOVEHICULO,COORDX,COORDY"
-				+ " FROM EQ4_APARCA";
+		String query = "select ID,LASTUPDATED,ICON,TITLE,HORARIO,ACCESOPEATON,ACCESOS,ACCESOVEHICULO,COORDX,COORDY"
+				+ " from EQ4_APARCA";
 		Statement st = null;
 		ResultSet rs = null;
 		
@@ -47,12 +47,10 @@ public class AparcamientosPublicosDAO {
 				String accesoVehiculo = rs.getString(8);
 
 				int x = rs.getInt(9);
-				punto.setX(x);
 				int y = rs.getInt(10);
-				punto.setY(y);
 
 				punto = new Punto(x, y);
-
+				
 				AparcamientosPublicosVO aparcamiento = new AparcamientosPublicosVO(
 						punto, horario, title, icon, accesos, fecha, accesoPeaton,
 						accesoVehiculo, id);
