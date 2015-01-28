@@ -19,7 +19,7 @@ public class AparcamientoBiciDAO{
 	// Listado de aparcamiento bicis
 	public List<AparcamientoBiciVO> getListadoAparcamientoBici() {
 		List<AparcamientoBiciVO> bicis = new ArrayList<AparcamientoBiciVO>();;			
-		String query = "Select * from AparcamientoBicis";
+		String query = "Select * from EQ4_Aparca";
 		Statement stmt = null;
 		ResultSet rs = null;
 		
