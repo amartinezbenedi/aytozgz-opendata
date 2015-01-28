@@ -73,5 +73,12 @@ public class AparcamientosPublicosVO {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public String toString(){
+		return ("Punto: " + punto + ", horario: " + horario + ", titulo:" +
+				 title + ", accesos: " + accesos + ", última actualizacion: " +
+				lastUpdated + ", acceso peatones: " + accesoPeaton + ", acceso "
+						+ "vehiculos: " + accesoVehiculo + ", id: " + id);
+	}
 }
 	

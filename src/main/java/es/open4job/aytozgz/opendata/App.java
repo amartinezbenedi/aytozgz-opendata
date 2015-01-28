@@ -12,11 +12,6 @@ public class App
     {
         ConsultaOrcl objeto= new ConsultaOrcl();
         
-        String consulta= "SELECT * FROM EQ4_BICI";
-        String resp= objeto.consultaOrcl(consulta, 2);
-        
-        System.out.println(resp);
-        
                 
     }
 }
