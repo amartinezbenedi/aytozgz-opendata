@@ -11,7 +11,7 @@ import java.sql.*;
 import es.open4job.aytozgz.opendata.model.vo.Punto;
 
 public class AparcamientosPublicosDAO {
-
+ 
 
 	public static Logger logger = Logger
 			.getLogger(AparcamientosPublicosDAO.class.getName());
