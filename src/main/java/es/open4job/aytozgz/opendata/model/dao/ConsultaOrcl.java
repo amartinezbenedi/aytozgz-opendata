@@ -6,73 +6,77 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.*;
 
 public class ConsultaOrcl{
 	
- private java.sql.Connection con=null;
- private java.sql.Statement stmt;
+ private Connection con=null;
+ private Statement stmt;
  public ResultSet resultado;
+ private PrintWriter pw = null;
+ private StringWriter sw= null;
  
- 
- //consulta: sentencia sql. modo: 1-&gt;insert, delete, update. 2-&gt;select.
- public String consultaOrcl(String consulta, Integer modo)
+ //Esta sirve para conectarse a la base de Datos
+ public Connection Conexion()
  {
-  String regs ="";
-  StringWriter sw = null;
-  PrintWriter pw = null;
-  
-  try
-  {
-	  String driver = "oracle.jdbc.driver.OracleDriver";
-	  
-	  String host = "54.154.192.80";
-	  String puerto = "1521";
-	  String sid = "xe";
-	  
-	  String user = "test";
-	  String password = "test";
-	  
-	  String url = "jdbc:oracle:thin:" + user + "/" + password + "@" + host
-	   + ":" + puerto + ":" + sid;
-   
-	  Class.forName(driver).newInstance();
-	  con = DriverManager.getConnection(url);
-	  stmt = (Statement) con.createStatement();
-	  //modo=1 -&gt; insert,update,delete; modo=2 -&gt; select
-	  if (modo == 1)
+	  try
 	  {
-		  stmt.executeUpdate(consulta);
+		  String driver = "oracle.jdbc.driver.OracleDriver";
 		  
+		  String host = "54.154.192.80";
+		  String puerto = "1521";
+		  String sid = "xe";
+		  
+		  String user = "test";
+		  String password = "test";
+		  
+		  String url = "jdbc:oracle:thin:" + user + "/" + password + "@" + host
+		   + ":" + puerto + ":" + sid;
+	   
+		  con = DriverManager.getConnection(url);
 	  }
-	  else
+	  catch(SQLException e)
 	  {
+		  pw = new PrintWriter(sw);
+		  e.printStackTrace(pw);
+	  }
+	  
+	  return con;
+	  
+  } 
+
+  public ResultSet Consulta(Connection con, String consulta)
+  {
+	  ResultSet resultado= null;
+	  try
+	  {
+		  stmt = (Statement) con.createStatement();
 		  resultado = (ResultSet) stmt.executeQuery(consulta);
 	  }
-	  while (resultado.next())
-      {
-          regs = regs + "ID: " + resultado.getString(1) + " LASTUPDATED: "+ (resultado.getString(2)) + " ICON: "+ (resultado.getString(3))+ " TITLE: "+ (resultado.getString(4))+ " COORDX: "+ (resultado.getString(5))+ " COORDY: "+ (resultado.getString(6));
-      }
+	  catch (SQLException e )
+	  {
+	    sw = new StringWriter();
+	    pw = new PrintWriter(sw);
+	    e.printStackTrace(pw);
+	  }
+	  return resultado;
+  }
+ 
+  public void CerrarConexion(Connection con)
+  {
 	   try
 	   {
-	    resultado.close();
-	    stmt.close();
-	    con.close();
+	     stmt.close();
+	     con.close();
 	   }
 	   catch (SQLException e )
 	   {
 	    sw = new StringWriter();
 	    pw = new PrintWriter(sw);
 	    e.printStackTrace(pw);
-	    return "NO FUNCIONA" + sw.toString() + "rn";
-	            }
-	  }
-	  catch (Exception ex)
-	  {
-	   sw = new StringWriter();
-	   pw = new PrintWriter(sw);
-	   ex.printStackTrace(pw);
-	   return "NO FUNCIONA" + sw.toString() + "rn";
-	  }
-	  return regs;
- }
+	    //return "NO FUNCIONA" + sw.toString() + "rn";
+	    }
+  }
+	
+ 
 }
