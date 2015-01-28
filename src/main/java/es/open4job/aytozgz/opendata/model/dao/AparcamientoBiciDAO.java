@@ -1,30 +1,77 @@
 package es.open4job.aytozgz.opendata.model.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import es.open4job.aytozgz.opendata.model.vo.AparcamientoBiciVO;
+import es.open4job.aytozgz.opendata.model.vo.Punto;
 
-public class AparcamientoBiciDAO extends AbstractDAO{
+public class AparcamientoBiciDAO{
 
-	public AparcamientoBiciDAO(String driver, String url, String user,
-			String password) {
-		super(driver, url, user, password);		
+	public AparcamientoBiciDAO() {		
 	}
+	
+	public static final Logger logger = Logger.getLogger(AparcamientoBiciDAO.class.getName());
 	
 	// Listado de aparcamiento bicis
 	public List<AparcamientoBiciVO> getListadoAparcamientoBici() {
-		List<AparcamientoBiciVO> bicis = null;
-		ResultSet result = null;
-		try {
-			result = connection.createStatement().executeQuery(
-					"SELECT 'hola mundo' FROM DUAL");
-			result.next();
-			System.out.println(result.getString(1));
-		} catch (SQLException e) {
+		List<AparcamientoBiciVO> bicis = new ArrayList<AparcamientoBiciVO>();;			
+		String query = "Select * from AparcamientoBicis";
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+
+		ConsultaOrcl co = new ConsultaOrcl();
+		Connection conection =  co.Conexion();
+		
+		try {			
+			
+			stmt = conection.createStatement();
+			rs = stmt.executeQuery(query);
+			Punto punto = null;
+			while (rs.next()) {
+				 int id = rs.getInt(1);
+				 String title = rs.getString(2);
+				 String icon = rs.getString(3);				
+				 Date fecha = rs.getDate(4);			 
+				 int x = rs.getInt(5);
+				 int y = rs.getInt(6);				
+				 punto = new Punto(x, y);
+				 punto.setX(x);				 
+				 punto.setY(y);	
+				 
+			AparcamientoBiciVO aparcamientoBiciVO = new AparcamientoBiciVO(id,punto,title,icon,fecha);	 
+	
+			bicis.add(aparcamientoBiciVO);
+			
+			return bicis;
+			
+			}			
+			
+		}catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "SQLException : " + e.getMessage());
+			
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
 		}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
+			}
+		}
+		
 		return bicis;
+
 	}
 
 	
