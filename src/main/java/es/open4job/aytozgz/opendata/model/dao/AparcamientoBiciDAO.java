@@ -24,7 +24,7 @@ public class AparcamientoBiciDAO{
 		ResultSet rs = null;
 
 		ConsultaOrcl co = new ConsultaOrcl();
-		Connection conection =  co.Conexion();
+		Connection conection =  co.conexion();
 		System.out.println("conexion abierta");
 		
 		try {			

@@ -17,8 +17,7 @@ public class ConsultaOrcl{
  private StringWriter sw= null;
  
  //Esta sirve para conectarse a la base de Datos
- public Connection Conexion()
- {
+ public Connection conexion(){
 	  try
 	  {
 		  String driver = "oracle.jdbc.driver.OracleDriver";
@@ -45,7 +44,7 @@ public class ConsultaOrcl{
 	  
   } 
 
-  public ResultSet Consulta(Connection con, String consulta)
+  public ResultSet consulta(Connection con, String consulta)
   {
 	  ResultSet resultado= null;
 	  try
@@ -62,7 +61,7 @@ public class ConsultaOrcl{
 	  return resultado;
   }
  
-  public void CerrarConexion(Connection con)
+  public void cerrarConexion(Connection con)
   {
 	   try
 	   {
