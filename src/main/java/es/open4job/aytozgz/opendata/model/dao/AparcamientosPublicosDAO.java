@@ -22,16 +22,22 @@ public class AparcamientosPublicosDAO {
 		List<AparcamientosPublicosVO> aparcamientos = new ArrayList<AparcamientosPublicosVO>();
 		String query = "select ID,LASTUPDATED,ICON,TITLE,HORARIO,ACCESOPEATON,ACCESOS,ACCESOVEHICULO,COORDX,COORDY"
 				+ " from EQ4_APARCA";
-		Statement st = null;
+		
+		String query2 = "select * from EQ4_APARCA WHERE ACCESOPEATON = ?";
+		
+		PreparedStatement st = null;
 		ResultSet rs = null;
 		
 		ConsultaOrcl co = new ConsultaOrcl();
 		Connection conection =  co.conexion();
 		
-
+		ConsultaOrcl co = new ConsultaOrcl();
+		Connection conection =  co.conexion();
 		try {
-			st = conection.createStatement();
-			rs = st.executeQuery(query);
+			st = conection.prepareStatement(query2);
+			String str = "Pirineos";
+			st.setString(1, str);
+			rs = st.executeQuery();
 
 			Punto punto = null;
 

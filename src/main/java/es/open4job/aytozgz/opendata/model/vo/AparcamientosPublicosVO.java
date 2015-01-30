@@ -75,6 +75,7 @@ public class AparcamientosPublicosVO {
 	public String getAccesoVehiculo() {
 		return accesoVehiculo;
 	}
+
 	public void setAccesoVehiculo(String accesoVehiculo) {
 		this.accesoVehiculo = accesoVehiculo;
 	}
@@ -86,10 +87,10 @@ public class AparcamientosPublicosVO {
 	}
 	
 	public String toString(){
-		return ("Punto: " + punto + ", horario: " + horario + ", titulo:" +
+		return ("AparcamientosPublicosVO [ID = " + id + "Punto= (" + punto.getX() + ", "+ punto.getY() + "), horario= " + horario + ", titulo=" +
 				 title + ", icon: " + icon + ", accesos: " + accesos + ", última actualizacion: " +
-				lastUpdated + ", acceso peatones: " + accesoPeaton + ", acceso "
-						+ "vehiculos: " + accesoVehiculo + ", id: " + id);
+				lastUpdated + ", acceso peatones= " + accesoPeaton + ", acceso "
+						+ "vehiculos= " + accesoVehiculo + "]");
 	}
 }
 	

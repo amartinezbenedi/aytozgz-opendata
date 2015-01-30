@@ -29,6 +29,8 @@ public class App {
     		}
     	}	
     	if (aparcamientos !=null){
+        System.out.println("-------------Lista de Aparcamientos--------------");  			
+
     	Iterator<AparcamientosPublicosVO> it = aparcamientos.iterator();
     		while (it.hasNext()){
     			AparcamientosPublicosVO aparcamiento = it.next();
