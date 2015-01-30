@@ -31,8 +31,6 @@ public class AparcamientosPublicosDAO {
 		ConsultaOrcl co = new ConsultaOrcl();
 		Connection conection =  co.conexion();
 		
-		ConsultaOrcl co = new ConsultaOrcl();
-		Connection conection =  co.conexion();
 		try {
 			st = conection.prepareStatement(query2);
 			String str = "Pirineos";
