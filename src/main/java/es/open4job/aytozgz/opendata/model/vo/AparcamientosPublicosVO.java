@@ -87,8 +87,8 @@ public class AparcamientosPublicosVO {
 	}
 	
 	public String toString(){
-		return ("AparcamientosPublicosVO [ID = " + id + "Punto= (" + punto.getX() + ", "+ punto.getY() + "), horario= " + horario + ", titulo=" +
-				 title + ", icon: " + icon + ", accesos: " + accesos + ", última actualizacion: " +
+		return ("AparcamientosPublicosVO [ID = " + id + ", Punto= (" + punto.getX() + ", "+ punto.getY() + "), horario= " + horario + ", titulo= " +
+				 title + ", icon= " + icon + ", accesos= " + accesos + ", última actualizacion= " +
 				lastUpdated + ", acceso peatones= " + accesoPeaton + ", acceso "
 						+ "vehiculos= " + accesoVehiculo + "]");
 	}
